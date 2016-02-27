@@ -5,7 +5,7 @@ Free Code Camp is a free online program that teaches full-stack web development.
 ## Basic Algorithm Scripting
 Here are my solutions to the new challenges in this section:
 
-#### Caesar's Cipher
+#### Caesar's Cipher: caesar.js
 FCC Instructions: "Write a function which takes a [ROT13](https://en.wikipedia.org/wiki/ROT13) encoded string as input and returns a decoded string. All letters will be uppercase. Do not transform any non-alphabetic character (i.e. spaces, punctuation), but do pass them on."
 
 ## Advanced Algorithm Scripting
