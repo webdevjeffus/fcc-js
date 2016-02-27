@@ -1,3 +1,4 @@
+// Used to verify char codes; not called in solution
 function listChars() {
   for( var i = 65; i <= 90; i++ ) {
     console.log( String.fromCharCode(i) );
@@ -10,10 +11,12 @@ function listCharCodes(str) {
   }
 }
 
+// Solution
 function rot13(str) { // LBH QVQ VG!
-  var result = "";
-  var lastIndexFirstHalf = "M".charCodeAt(0);
-  var currentCharCode;
+  var result = "",
+      lastIndexFirstHalf = "M".charCodeAt(0),
+      currentCharCode;
+
   for( var i = 0; i < str.length; i++) {
     currentCharCode = str.charCodeAt(i);
     if (currentCharCode >= 65 && currentCharCode <= 90) {
