@@ -7,12 +7,12 @@ function sym() {
         symDiff.push(arr0[i]);
       }
     }
-    for(var i = 0; i < arr1.length; i++) {
-      if ( !arr0.includes(arr1[i]) ) {
-        symDiff.push(arr1[i]);
+    for(var j = 0; j < arr1.length; j++) {
+      if ( !arr0.includes(arr1[j]) ) {
+        symDiff.push(arr1[j]);
       }
     }
-    return symDiff
+    return symDiff;
   }
 
   var workingArr = arguments[0],
@@ -22,7 +22,7 @@ function sym() {
     workingArr = sym2Arrs(workingArr, arguments[i]);
   }
 
-  var resultArr = workingArr.filter(function(elem, pos) {
+  resultArr = workingArr.filter(function(elem, pos) {
     return workingArr.indexOf(elem) == pos;
   });
 
