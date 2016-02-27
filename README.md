@@ -1,6 +1,6 @@
 # Free Code Camp - JavaScript Challenges
 
-Free Code Camp is a free online program that teaches full-stack web development. I began work at FCC before starting Dev Bootcamp's web development immersive in the fall of 2015. While I was busy at DBC, FCC greatly expanded their curriculum, and added certifications in a variety of areas. Now that I have finished the DBC program, I am working on the new challenges at FCC to expand my experience with JavaScript. I am archiving my code for the more elaborate challenges here at Github, as well.
+[Free Code Camp](http://www.freecodecamp.com/) is a free online program that teaches full-stack web development. I began work at FCC before starting Dev Bootcamp's web development immersive in the fall of 2015. While I was busy at DBC, FCC greatly expanded their curriculum, and added certifications in a variety of areas. Now that I have finished the DBC program, I am working on the new challenges at FCC to expand my experience with JavaScript. I am archiving my code for the more elaborate challenges here at Github, as well.
 
 ## Basic Algorithm Scripting
 Here are my solutions to the new challenges in this section:
