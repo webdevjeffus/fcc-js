@@ -22,3 +22,6 @@ FCC instructions: "Design a cash register drawer function that accepts purchase 
 
 #### Inventory Update: inventory.js
 FCC instructions: "Compare and update inventory stored in a 2d array against a second 2d array of a fresh delivery. Update current inventory item quantity, and if an item cannot be found, add the new item and quantity into the inventory array in alphabetical order."
+
+#### No Repeats Please: no_repeats.js
+FCC instructions: "Return the number of total permutations of the provided string that don't have repeated consecutive letters. Assume that duplicate characters are each unique. For example, aab should return 2 because it has 6 total permutations (aab, aab, aba, aba, baa, baa), but only 2 of them (aba and aba) don't have the same letter (in this case a) repeating."
