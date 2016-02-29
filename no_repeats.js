@@ -1,5 +1,3 @@
-// Solution in progress; not complete
-
 function getPerms(str){
   var permutations = [],
     nextPerm = [],
@@ -27,8 +25,8 @@ function checkForRepeats(word) {
     if ( word[i] === word[i+1]) {
       return true;
     }
-    return false;
   }
+  return false;
 }
 
 
@@ -37,9 +35,8 @@ function permAlone(str) {
   console.log(allPerms);
   var noRepeatsPerms = [];
 
-  debugger;
   for( var i = 0; i < allPerms.length; i++ ) {
-    if ( checkForRepeats(allPerms[i]) == false ) {
+    if ( checkForRepeats(allPerms[i]) === false ) {
       noRepeatsPerms.push(allPerms[i]);
     }
   }
