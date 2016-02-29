@@ -20,3 +20,5 @@ FCC instructions: "Create a function that takes two or more arrays and returns a
 #### Exact Change: exact_change.js
 FCC instructions: "Design a cash register drawer function that accepts purchase price as the first argument, payment as the second argument, and cash-in-drawer (cid) as the third argument. cid is a 2d array listing available currency. Return the string 'Insufficient Funds' if cash-in-drawer is less than the change due. Return the string 'Closed' if cash-in-drawer is equal to the change due. Otherwise, return change in coin and bills, sorted in highest to lowest order."
 
+#### Inventory Update: inventory.js
+FCC instructions: "Compare and update inventory stored in a 2d array against a second 2d array of a fresh delivery. Update current inventory item quantity, and if an item cannot be found, add the new item and quantity into the inventory array in alphabetical order."
