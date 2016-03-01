@@ -19,15 +19,21 @@ function friendly(arr) {
     if (numStr[0] === "0") {
       numStr = numStr.slice(1);
     }
+    console.log(numStr);
 
-    if (numStr[-1] === "1") {
-      numStr = numStr + "st";
-    } else if (numStr[-1] === "2") {
-      numStr = numStr + "nd";
-    } else if (numStr[-1] === "3") {
-      numStr = numStr + "rd";
-    } else {
-      numStr = numStr + "th";
+    switch ( numStr.charAt(numStr.length-1) ) {
+      case "1":
+        numStr = numStr + "st";
+        break;
+      case "2":
+        numStr = numStr + "nd";
+        break;
+      case "3":
+        numStr = numStr + "rd";
+        break;
+      default:
+        numStr = numStr + "th";
+      break;
     }
     return numStr;
   }
@@ -40,7 +46,6 @@ function friendly(arr) {
         convertedDate[0] = DATES[i][1];
       }
     }
-
     convertedDate[1] = convertToOrd(convertedDate[1]);
     return convertedDate;
   }
@@ -78,12 +83,8 @@ function friendly(arr) {
 
   var startDate = convertDate(arr[0]),
       endDate = convertDate(arr[1]);
-
   endDate = prepEndDate(startDate, endDate);
-
-  console.log( dateToStr(startDate), dateToStr(endDate) );
-
-  return arr;
+  return [ dateToStr(startDate), dateToStr(endDate) ];
 }
 
 friendly(['2016-07-01', '2016-07-04']);
