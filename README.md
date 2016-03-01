@@ -25,3 +25,8 @@ FCC instructions: "Compare and update inventory stored in a 2d array against a s
 
 #### No Repeats Please: no_repeats.js
 FCC instructions: "Return the number of total permutations of the provided string that don't have repeated consecutive letters. Assume that duplicate characters are each unique. For example, aab should return 2 because it has 6 total permutations (aab, aab, aba, aba, baa, baa), but only 2 of them (aba and aba) don't have the same letter (in this case a) repeating."
+
+#### Friendly Date Ranges: dates.js
+FCC instructions: "Convert a date range consisting of two dates formatted as YYYY-MM-DD into a more readable format. The friendly display should use month names instead of numbers and ordinal dates instead of cardinal ("1st" instead of "1").
+
+"Do not display information that is redundant or that can be inferred by the user: if the date range ends in less than a year from when it begins, do not display the ending year. If the range ends in the same month that it begins, do not display the ending year or month. Additionally, if the date range begins in the current year and ends within one year, the year should not be displayed at the beginning of the friendly range."
