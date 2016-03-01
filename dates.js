@@ -1,4 +1,4 @@
-var DATES = [
+var MONTHS = [
   [1, "January"],
   [2, "February"],
   [3, "March"],
@@ -15,12 +15,53 @@ var DATES = [
 
 function friendly(arr) {
 
-  function convertToOrd(numStr) {
-    if (numStr[0] === "0") {
-      numStr = numStr.slice(1);
+  function convertDate(date) {
+    var convertedDate = date.split('-');
+    for ( var i = 0; i < convertedDate.length; i++) {
+      convertedDate[i] = parseInt(convertedDate[i]);
     }
-    console.log(numStr);
+    return convertedDate;
+  }
 
+  function prepDates(dates) {
+    var startDate = dates[0],
+        endDate = dates[1],
+        workingStartDate = startDate,
+        workingEndDate = endDate,
+        currentYear = new Date().getFullYear();
+
+    if ( JSON.stringify(startDate) === JSON.stringify(endDate) ) {
+      workingEndDate = [];
+    }
+    // start and end in same month, same year
+    else if (startDate[0] === endDate[0] && startDate[1] === endDate[1]) {
+      workingEndDate = [ endDate[2] ];
+    }
+    // start & end within 1 year
+    else if (startDate[0] === endDate[0] ||
+        (startDate[0] === endDate[0]-1 && startDate[1] > endDate[1]) ||
+        (startDate[0] === endDate[0]-1 && startDate[1] === endDate[1]) && startDate[2] > endDate[2] ) {
+      // if start year is current year
+      workingEndDate = [ endDate[1], endDate[2] ];
+    }
+
+    if ( startDate[0] === currentYear && workingEndDate.length < 3 ) {
+      workingStartDate.shift();
+    }
+    return [workingStartDate, workingEndDate];
+  }
+
+  function monthNumToName(month) {
+    for( var i = 0; i < MONTHS.length; i++ ) {
+      if (month == MONTHS[i][0]) {
+        month = MONTHS[i][1];
+      }
+    }
+    return month;
+  }
+
+  function convertToOrd(num) {
+    var numStr = num.toString();
     switch ( numStr.charAt(numStr.length-1) ) {
       case "1":
         numStr = numStr + "st";
@@ -29,7 +70,11 @@ function friendly(arr) {
         numStr = numStr + "nd";
         break;
       case "3":
-        numStr = numStr + "rd";
+        if (numStr === "13") {
+          numStr = numStr + "th";
+        } else {
+          numStr = numStr + "rd";
+        }
         break;
       default:
         numStr = numStr + "th";
@@ -38,53 +83,41 @@ function friendly(arr) {
     return numStr;
   }
 
-  function convertDate(date) {
-    var convertedDate = date.split('-');
-    convertedDate.push(convertedDate.shift());
-    for( var i = 0; i < DATES.length; i++ ) {
-      if (convertedDate[0] == DATES[i][0]) {
-        convertedDate[0] = DATES[i][1];
+
+  function formatDates(dates) {
+    for (var i = 0; i < dates.length; i++ ) {
+      switch (dates[i].length) {
+        case 3:
+          dates[i][0] = dates[i][0].toString(); // year
+          dates[i][1] = monthNumToName(dates[i][1]); // month
+          dates[i][2] = convertToOrd(dates[i][2]); // date
+          dates[i] =  dates[i][1] + " " + dates[i][2] + ", " + dates[i][0];
+          break;
+        case 2:
+          dates[i][0] = monthNumToName(dates[i][0]); // month
+          dates[i][1] = convertToOrd(dates[i][1]); // date
+          dates[i] = dates[i][0] + " " + dates[i][1];
+          break;
+        case 1:
+          dates[i][0] = convertToOrd(dates[i][0]); // date
+          dates[i] = dates[i][0];
+          break;
       }
     }
-    convertedDate[1] = convertToOrd(convertedDate[1]);
-    return convertedDate;
-  }
 
-  function prepEndDate(startDate, endDate) {
-    console.log("Prep End: " + startDate + ", " + endDate);
-    if (startDate[2] === endDate[2]) {
-      endDate.pop();
-      if (startDate[0] === endDate[0]) {
-        endDate.shift();
-        if (startDate[1] === endDate[1]) {
-          endDate = [];
-        }
-      }
+    if (dates[1].length === 0) {
+      return [ dates[0] ];
     }
-    console.log("Prepped End: " + endDate);
-    return endDate;
+    return dates;
   }
 
-  function dateToStr(date) {
-    var strDate = "";
-    switch (date.length) {
-      case 3:
-        strDate = date[0] + " " + date[1] + ", " + date[2];
-        break;
-      case 2:
-        strDate = date[0] + " " + date[1];
-        break;
-      case 1:
-        strDate = date[0];
-        break;
-    }
-    return strDate;
-  }
 
-  var startDate = convertDate(arr[0]),
-      endDate = convertDate(arr[1]);
-  endDate = prepEndDate(startDate, endDate);
-  return [ dateToStr(startDate), dateToStr(endDate) ];
+  var dates = [ convertDate(arr[0]), convertDate(arr[1]) ];
+
+  dates = prepDates(dates);
+  dates = formatDates(dates);
+  return dates;
 }
 
 friendly(['2016-07-01', '2016-07-04']);
+
